@@ -9,7 +9,7 @@ See the COPYING file for licence information.
 from __future__ import print_function
 
 import re
-import controlchars
+from . import controlchars
 from collections import namedtuple
 
 frame_re = re.compile(
@@ -19,7 +19,8 @@ frame_re = re.compile(
     "(?P<type>[\x03\x17])"      # frame type: ETX = end, ETB = more follows
     "(?P<checksum>[0-9A-Fa-f]{2})"  # 8-bit checksum in hex
     "\r\n",                     # CRLF
-    re.DOTALL)
+#     re.DOTALL,
+    )
 
 
 class ASTMError(ValueError): pass
